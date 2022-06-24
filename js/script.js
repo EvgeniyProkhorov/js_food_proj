@@ -156,12 +156,13 @@ window.addEventListener('DOMContentLoaded', () => {
   // Class for cards
 
   class MenuCard {
-    constructor(src, alt, title, descr, price, parentSelector) {
+    constructor(src, alt, title, descr, price, parentSelector, ...classes) {
       this.src = src;
       this.alt = alt;
       this.title = title;
       this.descr = descr;
       this.price = price;
+      this.classes = classes;
       this.parent = document.querySelector(parentSelector);
       this.transfer = 58;
       this.changeToRUB();
@@ -173,17 +174,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
     render() {
       const element = document.createElement('div');
+      if (this.classes.length === 0) {
+        this.classes = 'menu__item';
+        element.classList.add(this.element);
+      } else {
+        this.classes.forEach(className => element.classList.add(className));
+      }
       element.innerHTML = `
-                <div class="menu__item">
-                    <img src=${this.src} alt="${this.alt}">
-                    <h3 class="menu__item-subtitle">${this.title}</h3>
-                    <div class="menu__item-descr">${this.descr}</div>
-                    <div class="menu__item-divider"></div>
-                    <div class="menu__item-price">
-                        <div class="menu__item-cost">Цена:</div>
-                        <div class="menu__item-total"><span>${this.price}</span> руб/день</div>
-                    </div>
-                </div>
+          <img src=${this.src} alt="${this.alt}">
+          <h3 class="menu__item-subtitle">${this.title}</h3>
+          <div class="menu__item-descr">${this.descr}</div>
+          <div class="menu__item-divider"></div>
+          <div class="menu__item-price">
+              <div class="menu__item-cost">Цена:</div>
+              <div class="menu__item-total"><span>${this.price}</span> руб/день</div>
+          </div>
       `;
       this.parent.append(element);
     }
@@ -197,7 +202,8 @@ window.addEventListener('DOMContentLoaded', () => {
      больше свежих овощей и фруктов.Продукт активных и здоровых людей.
      Это абсолютно новый продукт с оптимальнойценой и высоким качеством!`,
     9,
-    '.menu .container'
+    '.menu .container',
+    'menu__item'
   ).render();
 
   new MenuCard(
@@ -208,7 +214,8 @@ window.addEventListener('DOMContentLoaded', () => {
     и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода
     в ресторан!`,
     11,
-    '.menu .container'
+    '.menu .container',
+    'menu__item'
   ).render();
 
   new MenuCard(
@@ -219,7 +226,8 @@ window.addEventListener('DOMContentLoaded', () => {
     продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное
     количество белков за счет тофу и импортных вегетарианских стейков.`,
     8,
-    '.menu .container'
+    '.menu .container',
+    'menu__item'
   ).render();
 
 });
