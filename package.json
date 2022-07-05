@@ -1,0 +1,22 @@
+{
+  "name": "food_proj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvgeniyProkhorov/js_food_proj.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EvgeniyProkhorov/js_food_proj/issues"
+  },
+  "homepage": "https://github.com/EvgeniyProkhorov/js_food_proj#readme",
+  "devDependencies": {
+    "json-server": "^0.17.0"
+  }
+}
